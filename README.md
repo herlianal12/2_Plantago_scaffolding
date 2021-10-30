@@ -3,8 +3,8 @@
 Main stages in scaffolding:
 
 1. Genomic DNA extraction, library preparation, and Illumina sequencing
-2. Quality control for sequencing with FASTQC
-3. Quality control for library preparation with Phase Genomic pipeline
+2. Quality control sequencing using FASTQC
+3. Quality control library preparation using Phase Genomic pipeline
 4. Alignment and generating Hi-C contact map
 5. Automatic scaffolding
 6. Manual curation
@@ -14,7 +14,7 @@ Main stages in scaffolding:
 
 Description of this step can be found in this publication (link)
 
-**Step 2. Quality control for sequencing process using FASTQC***
+**Step 2. Quality control sequencing process***
 
 Compressing files
 ```
@@ -24,13 +24,17 @@ bgzip -c -l 9 Povata-HiC_combined_R2.fastq > Povata-HiC_combined_R2.fastq.gz
 
 Running snakemake pipeline for quality checking and trimming
 
+The pipeline is written in Snakemake workflow management. Information about rules in snakemake can be obtained in this website https://snakemake.readthedocs.io/en/stable/. Snakefile templates and other files required for running snakemake in High Performance Computer (HPC) can be downloaded from https://github.com/UofABioinformaticsHub/snakemake_template.
+
+All softwares or modules to execute this Snakefile are listed in envs/HiC.yaml
+
 ```
 snakemake --profile profiles/slurm --use-singularity --use-conda --snakefile Snakefile_HiC --dry-run
 snakemake --profile profiles/slurm --use-singularity --use-conda --snakefile Snakefile_HiC
 ```
 
 
-
+**Step 3. Quality control library 
   ```
 bwa index -a bwtsw -p clip_try1.fasta clip_try1.fasta
 
