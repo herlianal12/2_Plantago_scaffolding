@@ -1,4 +1,4 @@
-# Plantago_scaffolding
+# Plantago ovata scaffolding
 Main stages for scaffolding:
 1. Genomic DNA extraction and library preparation
 2. Illumina sequencing
