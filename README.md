@@ -1,32 +1,42 @@
 # Plantago ovata scaffolding
-Main stages for scaffolding:
-1. Genomic DNA extraction and library preparation
-2. Illumina sequencing
-3. Quality control for sequencing with FASTQC
-4. Quality control for library preparation with Phase Genomic pipeline
-5. Alignment and generating Hi-C contact map
-6. Automatic scaffolding
-7. Manual correction
+
+Main stages in scaffolding:
+
+1. Genomic DNA extraction, library preparation, and Illumina sequencing
+2. Quality control for sequencing with FASTQC
+3. Quality control for library preparation with Phase Genomic pipeline
+4. Alignment and generating Hi-C contact map
+5. Automatic scaffolding
+6. Manual curation
 
 
+**Step 1. Genomic DNA extraction and library preparation**
+
+Description of this step can be found in this publication (link)
+
+**Step 2. Quality control for sequencing process using FASTQC***
+
+Compressing files
 ```
 bgzip -c -l 9 Povata-HiC_combined_R1.fastq > Povata-HiC_combined_R1.fastq.gz
 bgzip -c -l 9 Povata-HiC_combined_R2.fastq > Povata-HiC_combined_R2.fastq.gz
 ```
-3. Quality control for sequencing with FASTQC
+
+Snakemake pipeline for quality checking and trimming
+
 ```
 SAMPLES_HiC     = ["Povata-HiC_combined"]
 READS           = ["R1", "R2"]
-ENVS            = "envs/HiC.yaml"
+ENVS            = "HiC.yaml"
 LOGS            = "logs"
-RAW             = "assembly/plantago_genome_sequences/HiC/raw"
-QC              = "assembly/plantago_genome_sequences/HiC/qc"
-MULTIQC         = "assembly/plantago_genome_sequences/HiC/multiqc"
-TRIMMED         = "assembly/plantago_genome_sequences/HiC/trimmed"
-QC_TRIMMED      = "assembly/plantago_genome_sequences/HiC/qc_trimmed"
-MULTIQC_TRIMMED = "assembly/plantago_genome_sequences/HiC/multiqc_trimmed"
+RAW             = "raw"
+QC              = "qc"
+MULTIQC         = "multiqc"
+TRIMMED         = "trimmed"
+QC_TRIMMED      = "qc_trimmed"
+MULTIQC_TRIMMED = "multiqc_trimmed"
 ADAPTERS        = "all_adapters.fa"
-REFERENCES      = "references/Plantago.fasta.gz"
+REFERENCES      = "Plantago.fasta.gz"
 
 ################
 # Pseudo-rules #
@@ -139,7 +149,9 @@ rule multiqc_trimmed:
                 2> {log}
                 """
   ```
-  
+
+
+
   ```
 bwa index -a bwtsw -p clip_try1.fasta clip_try1.fasta
 
