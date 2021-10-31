@@ -19,7 +19,7 @@ Description of this step can be found in this publication (link)
 **Step 2. Installing software**
 
 I used conda to install all tools and I created several environments due to software incompatibility.
-An example of how to create conda environments:
+An example of how to create a conda environment:
 ```
 conda create -n phase_genomics
 conda activate phase_genomics
