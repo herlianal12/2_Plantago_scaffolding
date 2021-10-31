@@ -18,21 +18,24 @@ Description of this step can be found in this publication (link)
 
 **Step 2. Installing software**
 
-I used conda to install all tools and I created several environments due to software incompatibility.
+I used conda to install most of bioinformatics tools and I created several environments due to software incompatibility.
 An example of how to create a conda environment:
 ```
 conda create -n phase_genomics
 conda activate phase_genomics
-conda install -c bioconda   
+conda install -c bioconda samblaster=0.1.26
 ```
-List of main tools for contig assembly:
-- Pacbio tools (bam2fastx 1.3.1, pbbam 1.6.0, pbcommand 2.1.1, pbcopper 1.9.1, pbcore 2.1.2, pbcoretools 0.8.1, pbgcpp 1.0.0, pbmm2 1.4.0, pbzip2 1.1.13) :   https://github.com/PacificBiosciences/pbbioconda
-- tabix 0.2.6 : https://github.com/samtools/tabix
-- canu 2.1.1 : https://github.com/marbl/canu 
-- minimap2 2.17 : https://github.com/lh3/minimap2
-- samtools 1.11 :https://github.com/samtools/samtools
-- bedtools 2.29.2 : https://github.com/arq5x/bedtools2 or https://bedtools.readthedocs.io/en/latest/content/tools/bamtofastq.html
-- fastqc 0.11.9 : https://github.com/s-andrews/FastQC
+List of main tools for scaffolding:
+- fastqc v0.11.9 : https://github.com/s-andrews/FastQC
+- trimmomatic v0.39 : http://www.usadellab.org/cms/?page=trimmomatic
+- bwa v0.7.17 : https://github.com/lh3/bwa
+- samblaster v0.1.26 : https://github.com/GregoryFaust/samblaster
+- samtools v1.9 : http://www.htslib.org/doc/1.9/samtools.html
+- matlock v20181227 : https://github.com/phasegenomics/matlock 
+- salsa2 : https://github.com/marbl/SALSA
+- 3D-DNA : https://github.com/aidenlab/3d-dna
+- Juicer : https://github.com/aidenlab/juicer
+- Juicebox Assembly Tools (JBAT) : https://github.com/aidenlab/Juicebox
 
 More tools can be found in Supplementary File Table 6 (link)
 
