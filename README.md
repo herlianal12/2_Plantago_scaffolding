@@ -34,7 +34,7 @@ snakemake --profile profiles/slurm --use-singularity --use-conda --snakefile Sna
 ```
 
 
-**Step 3. Quality control library 
+**Step 3. Quality control library**
   ```
 bwa index -a bwtsw -p clip_try1.fasta clip_try1.fasta
 
