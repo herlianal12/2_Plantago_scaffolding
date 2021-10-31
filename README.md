@@ -1,4 +1,4 @@
-# *Plantago* ovata scaffolding
+# *Plantago ovata* scaffolding
 
 Main stages in scaffolding:
 
