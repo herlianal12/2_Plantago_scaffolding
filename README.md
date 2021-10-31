@@ -1,19 +1,42 @@
 # *Plantago ovata* scaffolding
 
+Hi-C data was used to link contigs into a chromosome level assembly.
+
 Main stages in scaffolding:
 
 1. Genomic DNA extraction, library preparation, and Illumina sequencing
-2. Quality control sequencing using FASTQC
-3. Quality control library preparation using Phase Genomic pipeline
-4. Scaffolding using SALSA2
-5. Scaffolding using JUICER, 3D-DNA, and JBAT
+2. Installing bioinformatics tools
+3. Quality control sequencing using FASTQC
+4. Quality control library preparation using Phase Genomic pipeline
+5. Scaffolding using SALSA2
+6. Scaffolding using JUICER, 3D-DNA, and JBAT
 
 
 **Step 1. Genomic DNA extraction and library preparation**
 
 Description of this step can be found in this publication (link)
 
-**Step 2. Quality control sequencing process**
+**Step 2. Installing software**
+
+I used conda to install all tools and I created several environments due to software incompatibility.
+An example of how to create conda environments:
+```
+conda create -n phase_genomics
+conda activate phase_genomics
+conda install -c bioconda   
+```
+List of main tools for contig assembly:
+- Pacbio tools (bam2fastx 1.3.1, pbbam 1.6.0, pbcommand 2.1.1, pbcopper 1.9.1, pbcore 2.1.2, pbcoretools 0.8.1, pbgcpp 1.0.0, pbmm2 1.4.0, pbzip2 1.1.13) :   https://github.com/PacificBiosciences/pbbioconda
+- tabix 0.2.6 : https://github.com/samtools/tabix
+- canu 2.1.1 : https://github.com/marbl/canu 
+- minimap2 2.17 : https://github.com/lh3/minimap2
+- samtools 1.11 :https://github.com/samtools/samtools
+- bedtools 2.29.2 : https://github.com/arq5x/bedtools2 or https://bedtools.readthedocs.io/en/latest/content/tools/bamtofastq.html
+- fastqc 0.11.9 : https://github.com/s-andrews/FastQC
+
+More tools can be found in Supplementary File Table 6 (link)
+
+**Step 3. Quality control sequencing process**
 
 Compressing files
 ```
@@ -33,7 +56,7 @@ snakemake --profile profiles/slurm --use-singularity --use-conda --snakefile Sna
 ```
 
 
-**Step 3. Quality control library**
+**Step 4. Quality control library**
 
 source: https://phasegenomics.github.io/2019/09/19/hic-alignment-and-qc.html
   ```
@@ -60,7 +83,7 @@ matlock bamfilt -i Povata-HiC_combined.bam -o Povata-HiC_filter.bam
 ./hic_qc.py -b Povata-HiC_filter.bam -r --sample_type genome
  ```
 
-**Step 4: Scaffolding using SALSA2**
+**Step 5: Scaffolding using SALSA2**
 
 source: https://github.com/marbl/SALSA
  ```
@@ -92,7 +115,7 @@ $PYTHON $SALSA -a $CONTIGS -l $CONTIGS_LENGTH -b $CONTIGS_SORTED_BED -e $ENZYME 
 
 ```
 
-**Step 5. Scaffolding using JUICER, 3D-DNA, and JBAT**
+**Step 6. Scaffolding using JUICER, 3D-DNA, and JBAT**
 
 ```
 module load arch/haswell
