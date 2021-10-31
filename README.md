@@ -6,8 +6,7 @@ Main stages in scaffolding:
 2. Quality control sequencing using FASTQC
 3. Quality control library preparation using Phase Genomic pipeline
 4. Scaffolding using SALSA2
-5. Scaffolding using 3D-DNA
-6. Manual curation using JBAT
+5. Scaffolding using JUICER, 3D-DNA, and JBAT
 
 
 **Step 1. Genomic DNA extraction and library preparation**
