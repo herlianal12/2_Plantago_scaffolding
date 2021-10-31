@@ -18,7 +18,7 @@ Description of this step can be found in this publication (link)
 
 **Step 2. Installing software**
 
-I used conda to install most of bioinformatics tools and I created several environments due to software incompatibility.
+I used conda to install most of the bioinformatics tools and created several environments due to software incompatibility.
 An example of how to create a conda environment:
 ```
 conda create -n phase_genomics
@@ -26,6 +26,7 @@ conda activate phase_genomics
 conda install -c bioconda samblaster=0.1.26
 ```
 List of main tools for scaffolding:
+- tabix 0.2.6 : https://github.com/samtools/tabix
 - fastqc v0.11.9 : https://github.com/s-andrews/FastQC
 - trimmomatic v0.39 : http://www.usadellab.org/cms/?page=trimmomatic
 - bwa v0.7.17 : https://github.com/lh3/bwa
@@ -49,9 +50,9 @@ bgzip -c -l 9 Povata-HiC_combined_R2.fastq > Povata-HiC_combined_R2.fastq.gz
 
 Running snakemake pipeline for quality checking and trimming
 
-The pipeline is written in Snakemake workflow management. Information about rules in snakemake can be obtained in this website https://snakemake.readthedocs.io/en/stable/. Snakefile templates and other files required for running snakemake in High Performance Computer (HPC) can be downloaded from https://github.com/UofABioinformaticsHub/snakemake_template.
+The pipeline is written in Snakemake workflow management. Information about rules in snakemake can be obtained on this website https://snakemake.readthedocs.io/en/stable/. Snakefile templates and other files required for running snakemake in High Performance Computer (HPC) can be downloaded from https://github.com/UofABioinformaticsHub/snakemake_template.
 
-All softwares or modules to execute this Snakefile are listed in envs/HiC.yaml
+All tools or modules to execute this Snakefile are listed in envs/HiC.yaml
 
 ```
 snakemake --profile profiles/slurm --use-singularity --use-conda --snakefile Snakefile_HiC --dry-run
