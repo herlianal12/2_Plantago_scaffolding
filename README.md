@@ -42,6 +42,8 @@ More tools can be found in Supplementary File Table 6 (link)
 
 **Step 3. Quality control sequencing process**
 
+Raw data has been deposited in SRA NCBI : SRR14643406
+
 Compressing files
 ```
 bgzip -c -l 9 Povata-HiC_combined_R1.fastq > Povata-HiC_combined_R1.fastq.gz
